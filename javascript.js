@@ -53,7 +53,7 @@ const sigin = ()=>{
     detai = JSON.parse(localStorage.getItem("member"));
     detai.map((item,index)=>{
         if (userEl == detai[index].userEmail && userPrd == detai[index].userPassword) {
-            location.assign("");
+            location.assign("home.html");
             userEl = "";
             userPrd = "";
         }
