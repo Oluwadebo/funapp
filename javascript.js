@@ -21,17 +21,17 @@ const signup = ()=>{
         userNote:[],
     }
     if(firstname.value == "" ||  lastname.value == "" || address.value == ""  || email.value == "" || password.value == "" || number.value == "" || gd2 == ""){
-        message1.innerHTML = "Enter the value of the firstname"
+        message1.innerHTML = "Enter your firstname"
         message1.style.color = "red";
-        message2.innerHTML = "Enter the value of the Lastname"
+        message2.innerHTML = "Enter your Lastname"
         message2.style.color = "red";
-        message3.innerHTML = "Enter the value of the address"
+        message3.innerHTML = "Enter your address"
         message3.style.color = "red";
-        message4.innerHTML = "Enter the value of the email"
+        message4.innerHTML = "Enter your email"
         message4.style.color = "red";
-        message5.innerHTML = "Enter the value of the password"
+        message5.innerHTML = "Enter your password"
         message5.style.color = "red";
-        message6.innerHTML = "Enter the value of the phoneNumber"
+        message6.innerHTML = "Enter your phoneNumber"
         message6.style.color = "red";
         message7.innerHTML = "Choose your gender"
         message7.style.color = "red";
@@ -46,4 +46,23 @@ const signup = ()=>{
         number.value = "";
         location.assign("signin.html");
     }
+}
+const sigin = ()=>{
+    var userEl = email.value;
+    var userPrd = password.value;
+    detai = JSON.parse(localStorage.getItem("member"));
+    detai.map((item,index)=>{
+        if (userEl == detai[index].userEmail && userPrd == detai[index].userPassword) {
+            location.assign("");
+            userEl = "";
+            userPrd = "";
+        }
+        if (userEl !== detai[index].userEmail && userPrd !== detai[index].userPassword) {
+            message8.innerHTML = "Enter your email"
+            message8.style.color = "red";
+            message9.innerHTML = "Enter your password"
+            message9.style.color = "red";
+        }
+    })
+    console.log(detai);
 }

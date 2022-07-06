@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
     <title>Document</title>
+    <style>
+        @media only screen and (max-width: 600px){
+            .modal-heade{
+                margin: 30px;
+            }
+        }
+    </style>
 </head>
 <body class="bg-dark">
     
@@ -18,8 +25,8 @@
                 <div class="modal-body">
                     <h2 class="modal-title my-3" style="color: rgb(25, 25, 87);"><i>SIGN-IN</i></h2>
                     <div class="container my-3">
-                        <input type="email" class="form-control my-3" placeholder="Your email" id="email">
-                        <input type="password" class="form-control my-3" maxlength="10" placeholder="Your password" id="password">
+                        <input type="email" class="form-control my-3" placeholder="Your email" id="email"><small id="message8"></small>
+                        <input type="password" class="form-control my-3" maxlength="10" placeholder="Your password" id="password"><small id="message9"></small>
                     </div>
                     <button type="button" class="btn btn-primary col-10 col-md-5 my-2" onclick="sigin()">SIGN-IN</button>
                 </div>
