@@ -1,0 +1,5 @@
+
+
+const signinn = ()=>{
+    location.assign()
+}
