@@ -1,4 +1,4 @@
-
+//sigin-up javascript
 detai = [];
 const signinn = ()=>{
     location.assign("signin.html")
@@ -47,6 +47,7 @@ const signup = ()=>{
         location.assign("signin.html");
     }
 }
+//sigin-in javascript
 const sigin = ()=>{
     var userEl = email.value;
     var userPrd = password.value;
@@ -57,7 +58,7 @@ const sigin = ()=>{
             userEl = "";
             userPrd = "";
         }
-        if (userEl !== detai[index].userEmail && userPrd !== detai[index].userPassword) {
+        else if (userEl !== detai[index].userEmail && userPrd !== detai[index].userPassword) {
             message8.innerHTML = "Enter your email"
             message8.style.color = "red";
             message9.innerHTML = "Enter your password"
@@ -65,4 +66,12 @@ const sigin = ()=>{
         }
     })
     console.log(detai);
+}
+//home javascript
+if(localStorage.member){
+    detai = JSON.parse(localStorage.getItem("member"));
+    console.log(detai);
+    detai.map((item,index)=>{
+        userName.innerHTML = `${detai[index].Firstname}  ${detai[index].userLastname}`
+    })
 }

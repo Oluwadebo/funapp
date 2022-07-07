@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/all.min.css">
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
-    <title>home</title>
+    <title>note</title>
 </head>
-<body style="background-color: #15273B;">
+<body style="background-color: #15273B;font-family: Verdana, Geneva, Tahoma, sans-serif;">
     
     <div>
 
@@ -19,7 +19,7 @@
                     <img id="img" src="pic/profile.PNG" class="rounded-circle" alt="" height="60px">
                     <div class="px-4">
                         <div class="mt-2">
-                            <p></p>
+                            <p id="userName"></p>
                         </div>
                         <p class="text-success">Online</p>
                     </div>
@@ -28,7 +28,7 @@
                     <li class="col-12 py-2"><i class="fa fa-user-circle text-light px-2"></i><a class="h4 text-light" href="">Profile</a></li>
                 </div><hr class="border-light">      
                 <div class="py-3 d-flex">
-                    <li class="col-12 py-2 "><i class="fa fa-book col-2 text-light px-2"></i><a class="h4 text-light" href="">Notes</a></li>
+                    <li class="col-12 py-2 "><i class="fa fa-book col-2 text-light px-2"></i><a class="h4 text-light" href="home.html">Notes</a></li>
                 </div>
                 <div class="py-3">
                     <li class="col-12  ms-1 py-2 "> <i class="fa fa-clock-o text-light px-2"></i><a class="h4 text-light" href="">Events</a></li>
@@ -73,16 +73,60 @@
 						</div>
 					</nav>
                 </header>        
-                <section id="main" style="height: 88vh;" class=" col-12 justify-content-center"></section>
+                <section>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><h2>add new note</h2></button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Note taker</h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Add a New Note</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container d-flex my-2">
+                                        <p class="pr-2">Title</p> 
+                                        <input type="text" id="title" class="form-control" placeholder="Enter note Title">
+                                    </div>
+                                    <div class="container d-flex">
+                                        <p class="pt-3 pr-2">Note</p> 
+                                        <textarea  name="note" id="note" class="form-control" cols="50" rows="15" placeholder="Enter Your note here"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close note</button>
+                                <button type="button" class="btn dis" style="background-color:#15273B;color:white;">Save note</button>
+                                <button type="button" class="btn dis" style="background-color:#15273B;color:white;display:none;">Update note</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form_container">
+                        <h1>Note taker</h1>
+                        <h3 class="text-success">Add a New Note:</h3>
+                        <form>
+                            <label for="title">Title 
+                              <input type="text" id="title" placeholder="Enter note Title">
+                            </label>
+                            <label for="note">Note 
+                              <textarea  name="note" id="note" cols="30" rows="10" placeholder="Enter Your note here"></textarea>
+                            </label>
+                            <button class='btn dis' onclick='save()' id="hov">Save</button>
+                            <button class='btn dis' onclick='update()' style="display:none;" id="upd">update</button>
+                            <!-- <button class='btn di' onclick='disp()'>Display</button> -->
+                        </form>
+                    </div>  
+                    <div class="note-container">
+                      <div class="note" id="display"></div> 
+                    </div> -->
+                </section>
             </div>
         
         </section>
 
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <script src="javascript.js"></script>
-    <script src="bootstrap-4.3.1-dist/js/jquery-slim.min.js"></script>
-    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
