@@ -3,6 +3,9 @@ detai = [];
 if (localStorage.progect) {
     detai = JSON.parse(localStorage.progect)
 }
+const signinu = ()=>{
+    location.assign("siginup.html")
+}
 const signinn = ()=>{
     location.assign("signin.html")
 }
