@@ -58,15 +58,20 @@ const sigin = ()=>{
     let val = JSON.parse(localStorage.getItem("member"));
     if (email.value != "" && password.value != "") {
         for(const a of val){
-            if (a ["userEmail"] == email.value && a["userPassword"] == password.value) {
+            if (a["userEmail"] == email.value && a["userPassword"] == password.value) {
                 location.assign("home.html");
                 localStorage.userEmail = JSON.stringify(email.value);
+            }else{
+                message8.innerHTML = "Enter the correct email"
+                message8.style.color = "red";
+                message9.innerHTML = "Enter the correct password"
+                message9.style.color = "red";
             }
         }
     }else{
-        message8.innerHTML = "Enter the correct email"
+        message8.innerHTML = "Enter your email"
         message8.style.color = "red";
-        message9.innerHTML = "Enter the correct password"
+        message9.innerHTML = "Enter your password"
         message9.style.color = "red";
     }
     email.value = "";
@@ -82,45 +87,47 @@ val.map((item,index)=>{
     }
 })
 const save = ()=>{
-    informatio = {  
-        userTitle:title.value,
-        userNote:note.value,
+    if (title.value != "" && note.value != ""){
+        informatio = {  
+            userTitle:title.value,
+            userNote:note.value,
+        }
+        receiver.push(informatio);
+        display.innerHTML = "";
+        only();
+        title.value = "";
+        note.value = "";
+        val.map((item,index)=>{
+            if (val[index].userEmail == mail) {
+                val[index].userNote = receiver;
+                console.log(val[index].userNote);
+            }
+        })
+        localStorage.member = JSON.stringify(val);
+    }else{
+        // alert("You are not permited to submit an empty note")
     }
-    receiver.push(informatio);
-    display.innerHTML = "";
-    only();
-    title.value = "";
-    note.value = "";
-    val.map((item,index)=>{
-        if (val[index].userEmail == mail) {
-            val[index].userNote = receiver;
-            console.log(val[index].userNote);
-        }
-    })
-    localStorage.member = JSON.stringify(val);
-
-    receiver[ind].title = userTitle;
-    receiver[ind].note = note.value;
-    val.map((item,index)=>{
-        if (val[index].userEmail == mail) {
-            val[index].userNote = receiver;
-            console.log(val[index].userNote);
-        }
-    })
-    localStorage.member = JSON.stringify(val);
-    display.innerHTML = "";
-    only();
+    
+    // receiver[ind].title = userTitle;
+    // receiver[ind].note = note.value;
+    // val.map((item,index)=>{
+    //     if (val[index].userEmail == mail) {
+    //         val[index].userNote = receiver;
+    //         console.log(val[index].userNote);
+    //     }
+    // })
+    // localStorage.member = JSON.stringify(val);
+    // display.innerHTML = "";
+    // only();
 }
 const only = ()=>{
     for (var index = receiver.length -1; index >= 0; index--) {
-        display.innerHTML += `<div class="container cal bgsuccess col-2 card mb-2 d-flex justify-content-around">
-            <div class="fs-3 text-light">${receiver[index].title}</div>
-            <p class="text-light">${receiver[index].note}</p>
-
-            <div class="container d-flex justify-content-end">
-                <div>
-                    <button class="btn edit me-3" onclick='edit(&{index})' data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
-                </div>
+        display.innerHTML += `<div class="container col-6 card my-2" style="background-color: #15273B;">
+            <h2 class="text-light">${receiver[index].userTitle}</h2>
+            <p class="text-light">${receiver[index].userNote}</p>
+            <div class="container pb-1">
+                <button class="btn me-3" onclick='del(&{index})' style="background-color:#E01541;color:white;">Delet Note</button>
+                <button class="btn btn-primary me-3" onclick='edit(&{index})' data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit Note</button>
             </div>
         </div>`
     }
@@ -134,15 +141,15 @@ const del = (index)=>{
             console.log(val[index].userNote);
         }
     })
-    display.innerHTML = "";
+    display.innerHTML += receiver;
     only();
     localStorage.member = JSON.stringify(val);
 }
 let ind;
 const edit = (index)=>{
+    title.value = receiver[index].userTitle;
+    note.value = receiver[index].userNote;
     ind = index;
-    title.value = receiver[index].title;
-    note.value = receiver[index].note;
 }
 const logout = ()=>{
     localStorage.removeItem("userEmail")
