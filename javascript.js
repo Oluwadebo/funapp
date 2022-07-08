@@ -61,52 +61,89 @@ const sigin = ()=>{
             if (a ["userEmail"] == email.value && a["userPassword"] == password.value) {
                 location.assign("home.html");
                 localStorage.userEmail = JSON.stringify(email.value);
-            }else{
-                message8.innerHTML = "Enter the correct email"
-                message8.style.color = "red";
-                message9.innerHTML = "Enter the correct password"
-                message9.style.color = "red";
             }
         }
+    }else{
+        message8.innerHTML = "Enter the correct email"
+        message8.style.color = "red";
+        message9.innerHTML = "Enter the correct password"
+        message9.style.color = "red";
     }
     email.value = "";
     password.value = "";
 }
 //home javascript
-// if(localStorage.member){
-//     details = JSON.parse(localStorage.getItem("member"));
-//     // console.log(details);
-//     details.map((item,index)=>{
-//         userName.innerHTML = `${details[index].Firstname}  ${details[index].userLastname}`
-//     })
-// }
-// details = JSON.parse(localStorage.getItem("member"));
-// var com;
-// for (let i = 0; i <details.length; i++) {
-//    alert()
-    
-// }
-// // details.map((item,index)=>{
-// //     var com;
-// //     com=details[index];
-// // })
-// // console.log(com);
-// // race = []
-// const save = ()=>{
-//     informatio = {  
-//         userTitle:title.value,
-//         userNote:note.value,
-//     }
-//     com.push(informatio)
-//     console.log(com);
-//     details.map((item,index)=>{
-//         com=details[index];
-//         // console.log(details); 
-//     })
-// }
-// for (let index = 0; index <details.length; index++) {
-//     details[index]=com;  
-// }
-// details.map((item,index)=>{
-//     details[index]=com;
-// })
+var val = JSON.parse(localStorage.getItem("member"));
+var mail = JSON.parse(localStorage.getItem("userEmail"));
+let receiver;
+val.map((item,index)=>{
+    if (val[index].userEmail == mail) {
+        receiver = val[index].userNote
+    }
+})
+const save = ()=>{
+    informatio = {  
+        userTitle:title.value,
+        userNote:note.value,
+    }
+    receiver.push(informatio);
+    display.innerHTML = "";
+    only();
+    title.value = "";
+    note.value = "";
+    val.map((item,index)=>{
+        if (val[index].userEmail == mail) {
+            val[index].userNote = receiver;
+            console.log(val[index].userNote);
+        }
+    })
+    localStorage.member = JSON.stringify(val);
+
+    receiver[ind].title = userTitle;
+    receiver[ind].note = note.value;
+    val.map((item,index)=>{
+        if (val[index].userEmail == mail) {
+            val[index].userNote = receiver;
+            console.log(val[index].userNote);
+        }
+    })
+    localStorage.member = JSON.stringify(val);
+    display.innerHTML = "";
+    only();
+}
+const only = ()=>{
+    for (var index = receiver.length -1; index >= 0; index--) {
+        display.innerHTML += `<div class="container cal bgsuccess col-2 card mb-2 d-flex justify-content-around">
+            <div class="fs-3 text-light">${receiver[index].title}</div>
+            <p class="text-light">${receiver[index].note}</p>
+
+            <div class="container d-flex justify-content-end">
+                <div>
+                    <button class="btn edit me-3" onclick='edit(&{index})' data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+                </div>
+            </div>
+        </div>`
+    }
+}
+const del = (index)=>{
+    let filt = receiver.filter((item,ind)=>index != ind);
+    receiver = filt;
+    val.map((item,index)=>{
+        if (val[index].userEmail == mail) {
+            val[index].userNote = receiver;
+            console.log(val[index].userNote);
+        }
+    })
+    display.innerHTML = "";
+    only();
+    localStorage.member = JSON.stringify(val);
+}
+let ind;
+const edit = (index)=>{
+    ind = index;
+    title.value = receiver[index].title;
+    note.value = receiver[index].note;
+}
+const logout = ()=>{
+    localStorage.removeItem("userEmail")
+}

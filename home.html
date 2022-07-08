@@ -54,6 +54,9 @@
 								<li class="nav-item">
                                     <a class="nav-link text-light" href="signin.html">sign-in</a>
 								</li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="signin.html" onclick="logout()">Log-out</a>
+								</li>
 								<li class="nav-item">
 									<a class="nav-link text-light" href="">Edit</a>
 								</li>
@@ -94,15 +97,16 @@
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close note</button>
-                                <button type="button" class="btn dis" onclick="save()" style="background-color:#15273B;color:white;">Save note</button>
+                                <button type="button" class="btn dis" data-bs-dismiss="modal" onclick="save()" style="background-color:#15273B;color:white;">Save note</button>
                                 <button type="button" class="btn dis" onclick="Update()" style="background-color:#15273B;color:white;display:none;">Update note</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="note-container">
+                    <div id="display"></div>
+                    <!-- <div class="note-container">
                         <div class="note" id="display"></div> 
-                    </div>
+                    </div> -->
                 </section>
             </div>
         
@@ -112,6 +116,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <script src="javascript.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/jquery-slim.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
