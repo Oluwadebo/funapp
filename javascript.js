@@ -1,15 +1,19 @@
-//sigin-up javascript
-detai = [];
-if (localStorage.progect) {
-    detai = JSON.parse(localStorage.progect)
-}
+// index javascricpt
 const signinu = ()=>{
     location.assign("siginup.html")
 }
 const signinn = ()=>{
     location.assign("signin.html")
 }
+//sigin-up javascript
+details = [];
+const getPreviousValues = ()=>{
+    if (localStorage.member) {
+        details = JSON.parse(localStorage.member)
+    }
+}
 const signup = ()=>{
+    getPreviousValues()
     let gd = document.getElementById('gen');
     let gd2 = gd.options[gd.selectedIndex].text;
     informat = {
@@ -23,82 +27,68 @@ const signup = ()=>{
         userContact:[],
         userNote:[],
     }
-    // if(firstname.value == "" ||  lastname.value == "" || address.value == ""  || email.value == "" || password.value == "" || number.value == "" || gd2 == ""){
-    //     message1.innerHTML = "Enter your firstname"
-    //     message1.style.color = "red";
-    //     message2.innerHTML = "Enter your Lastname"
-    //     message2.style.color = "red";
-    //     message3.innerHTML = "Enter your address"
-    //     message3.style.color = "red";
-    //     message4.innerHTML = "Enter your email"
-    //     message4.style.color = "red";
-    //     message5.innerHTML = "Enter your password"
-    //     message5.style.color = "red";
-    //     message6.innerHTML = "Enter your phoneNumber"
-    //     message6.style.color = "red";
-    //     message7.innerHTML = "Choose your gender"
-    //     message7.style.color = "red";
-    // }else{
-    //     detai.push(informat);
-    //     localStorage.progect = JSON.stringify(detai);
-    //     console.log(detai);
-    //     firstname.value = "";
-    //     lastname.value = "";
-    //     address.value = "";
-    //     email.value = "";
-    //     number.value = "";
-    //     location.assign("signin.html");
-    // }
+    if(firstname.value == "" ||  lastname.value == "" || address.value == ""  || email.value == "" || password.value == "" || number.value == "" || gd2 == ""){
+        message1.innerHTML = "Enter your firstname"
+        message1.style.color = "red";
+        message2.innerHTML = "Enter your Lastname"
+        message2.style.color = "red";
+        message3.innerHTML = "Enter your address"
+        message3.style.color = "red";
+        message4.innerHTML = "Enter your email"
+        message4.style.color = "red";
+        message5.innerHTML = "Enter your password"
+        message5.style.color = "red";
+        message6.innerHTML = "Enter your phoneNumber"
+        message6.style.color = "red";
+        message7.innerHTML = "Choose your gender"
+        message7.style.color = "red";
+    }else{
+        details.push(informat);
+        localStorage.member = JSON.stringify(details);
+        location.assign("signin.html");
+        firstname.value = "";
+        lastname.value = "";
+        address.value = "";
+        email.value = "";
+        number.value = "";
+    }
 }
 //sigin-in javascript
-// const sigin = ()=>{    
-//     var userEl = email.value;
-//     var userPrd = password.value;
-//     // let val = JSON.parse(localStorage.getItem("date"))
-//     let val = JSON.parse(localStorage.getItem("progect"));
-//     if (email.value != "" && password.value != "") {
-//         for(const k of val){
-//             if (k["email"] == email.value && k["password"] == password.value) {
-//                 localStorage.email=JSON.stringify(email.value)
-//                 cons
-//                 ole.log(k
-//                     );
-//             }
-//         }
-//     }
-    // detai.forEach(element => {
-        
-    // });
-    // detai.map((item,index)=>{
-        
-    // })    
-    //     else if (userEl !== detai[index].userEmail && userPrd !== detai[index].userPassword) {
-    //         message8.innerHTML = "Enter your email"
-    //         message8.style.color = "red";
-    //         message9.innerHTML = "Enter your password"
-    //         message9.style.color = "red";
-    //     }
-    // })
-    // console.log(detai);
-
-// }
+const sigin = ()=>{
+    let val = JSON.parse(localStorage.getItem("member"));
+    if (email.value != "" && password.value != "") {
+        for(const a of val){
+            if (a ["userEmail"] == email.value && a["userPassword"] == password.value) {
+                location.assign("home.html");
+                localStorage.userEmail = JSON.stringify(email.value);
+            }else{
+                message8.innerHTML = "Enter the correct email"
+                message8.style.color = "red";
+                message9.innerHTML = "Enter the correct password"
+                message9.style.color = "red";
+            }
+        }
+    }
+    email.value = "";
+    password.value = "";
+}
 //home javascript
-// if(localStorage.progect){
-//     detai = JSON.parse(localStorage.getItem("progect"));
-//     // console.log(detai);
-//     detai.map((item,index)=>{
-//         userName.innerHTML = `${detai[index].Firstname}  ${detai[index].userLastname}`
+// if(localStorage.member){
+//     details = JSON.parse(localStorage.getItem("member"));
+//     // console.log(details);
+//     details.map((item,index)=>{
+//         userName.innerHTML = `${details[index].Firstname}  ${details[index].userLastname}`
 //     })
 // }
-// detai = JSON.parse(localStorage.getItem("progect"));
+// details = JSON.parse(localStorage.getItem("member"));
 // var com;
-// for (let i = 0; i <detai.length; i++) {
+// for (let i = 0; i <details.length; i++) {
 //    alert()
     
 // }
-// // detai.map((item,index)=>{
+// // details.map((item,index)=>{
 // //     var com;
-// //     com=detai[index];
+// //     com=details[index];
 // // })
 // // console.log(com);
 // // race = []
@@ -109,14 +99,14 @@ const signup = ()=>{
 //     }
 //     com.push(informatio)
 //     console.log(com);
-//     detai.map((item,index)=>{
-//         com=detai[index];
-//         // console.log(detai); 
+//     details.map((item,index)=>{
+//         com=details[index];
+//         // console.log(details); 
 //     })
 // }
-// for (let index = 0; index <detai.length; index++) {
-//     detai[index]=com;  
+// for (let index = 0; index <details.length; index++) {
+//     details[index]=com;  
 // }
-// detai.map((item,index)=>{
-//     detai[index]=com;
+// details.map((item,index)=>{
+//     details[index]=com;
 // })
