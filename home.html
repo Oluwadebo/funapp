@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
     <title>note</title>
 </head>
-<body style="background-color: #15273B;font-family: Verdana, Geneva, Tahoma, sans-serif;">
+<body onload="only()" style="background-color: #15273B;font-family: Verdana, Geneva, Tahoma, sans-serif;">
     
     <div>
 
@@ -78,8 +78,7 @@
                 </header>        
                 <section>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><h2>add new note</h2></button>
-                    <button type="button" class="btn btn-primary col-10 col-md-4 my-2" onclick="only()">Display saved note</button>
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -97,17 +96,13 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close note</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Update()">Close note</button>
                                 <button type="button" class="btn dis" data-bs-dismiss="modal" onclick="save()" style="background-color:#15273B;color:white;">Save note</button>
-                                <button type="button" class="btn dis" onclick="Update()" style="background-color:#15273B;color:white;display:none;">Update note</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="display"></div>
-                    <!-- <div class="note-container">
-                        <div class="note" id="display"></div> 
-                    </div> -->
                 </section>
             </div>
         
